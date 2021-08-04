@@ -1,2 +1,5 @@
 /* PHASE 2: Thumbs */
-
+.thumb {
+    display: block;
+    width: 60px;
+}
