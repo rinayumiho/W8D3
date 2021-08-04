@@ -105,11 +105,11 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip = []){
   let nextY = pos[1] + dir[1];
   let nextPos = [nextX, nextY];
 
-  if (!this.isValidPos(nextPos)) {
-    return piecesToFlip
+  if (this.getPiece(nextPos) === undefined) {
+    return []
   }
 
-  if (this.getPiece(nextPos) === undefined || this.getPiece(nextPos).color === color) {
+  if (this.getPiece(nextPos).color === color) {
     return piecesToFlip
   } 
 
@@ -127,10 +127,18 @@ Board.prototype.validMove = function (pos, color) {
   if (!this.isValidPos(pos) || this.isOccupied(pos)) {
     return false
   }
+ 
+  for (let i = 0; i < 8; i++) {
+    if (this._positionsToFlip(pos, color, Board.DIRS[i], []).length > 0) {
+      return true
+    }
+  }
 
-  
-  
+  return false
 };
+
+b = new Board;
+b.validMove([2,4], 'white');
 
 /**
  * Adds a new piece of the given color to the given position, flipping the
