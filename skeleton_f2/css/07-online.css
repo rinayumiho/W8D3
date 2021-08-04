@@ -21,3 +21,47 @@
   transform: rotate(-45deg) translateX(-25%);
   box-shadow: 0 1px 0 0 #070;
 }
+
+#thumbs-container {
+  margin-top: 20px;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  /* overflow: visible; */
+}
+
+.thumb {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.thumb:hover::before {
+  display: block;
+  position: absolute;
+  /* left: 20%; */
+  transform: translateY(-30px);
+
+  content: attr(title);
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.thumb:hover::after {
+  display: block;
+  position: absolute;
+  /* left: 20%; */
+  transform: translateY(-62px) translateX(15px);
+  width: 0;
+  height: 10px;
+  content: "string";
+  background-color: transparent;
+  color: transparent;
+  border-top: 15px solid black;
+  border-bottom: 15px transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
